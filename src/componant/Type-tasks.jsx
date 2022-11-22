@@ -1,10 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const TypeTaskes = () => {
     return (  
         <nav>
             <div className="container">
-                types tskes
+                <ul className='nav-links d-flex'>
+                    <li>
+                        <NavLink to="/">day</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/week">week</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/month">month</NavLink>
+                    </li>
+                </ul>
             </div>
         </nav>
     );

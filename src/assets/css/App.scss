@@ -1,8 +1,146 @@
+// insert
+@import "../sass/varibles";
+@import "../sass/maxin";
 
 
+/* start Global styles */
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* End Global styles */
+
+
+/* start Header */
 
 .header {
     text-align: center;
     box-shadow: 0 1px #eee;
 }
+
+/* End Header */
+
+/* start Navgate */
+
+.nav-links {
+    list-style: none;
+    background-color: $opacity-color;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    li {
+        width: (100% / 3);
+        text-align: center;
+
+        a {
+            display: block;
+            color: #efefef;
+            text-decoration: none;
+            text-transform: capitalize;
+            font-weight: bold;
+            padding: 15px;
+
+            &:hover,
+            &.active {
+                background-color: $main_color;
+            }
+        }
+    }
+}
+
+/* End Navgate */
+
+/* start add task-section */
+.add-task-section {
+    background-color: $opacity-secound-color;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    input[type="text"] {
+        background-color: $secound-color;
+        color: white;
+        caret-color: $main_color;
+    }
+
+    input[type="submit"] {
+        @include input-style($main_color);
+        font-size: 24px;
+        border-radius: 50%;
+    } 
+}
+
+/* End add task section */
+
+/* start Tasks container => header */ 
+
+.content {
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    header.header-tasks {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+
+        .btn-finshed {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: .7;
+            text-transform: capitalize;
+            transition: $transition;
+            background-color: $secound-color;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .btn-delete {
+            @extend .btn-finshed;
+            background-color: $main-color;
+        }
+    }
+
+    aside.information-tasks {
+        background-color: #EFEFEF;
+        padding: 25px;
+
+        .tasks-info {
+            color: $text-color;   
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            margin: 16px 0;
+
+            .number {
+                margin: 0 8px;
+            }
+            
+            &.tasks-number .number {background-color: $main-color;}
+            &.tasks-finshed .number {background-color: $secound-color;}
+        }
+    }
+}
+
+body {
+    height: 10000px;
+}
+/* start Tasks container => header */ 

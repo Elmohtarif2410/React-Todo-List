@@ -1,4 +1,119 @@
+/* start Global styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* End Global styles */
+/* start Header */
 .header {
   text-align: center;
   box-shadow: 0 1px #eee;
-}/*# sourceMappingURL=App.css.map */
+}
+
+/* End Header */
+/* start Navgate */
+.nav-links {
+  list-style: none;
+  background-color: #F0A8F8;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.nav-links li {
+  width: 33.3333333333%;
+  text-align: center;
+}
+.nav-links li a {
+  display: block;
+  color: #efefef;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding: 15px;
+}
+.nav-links li a:hover, .nav-links li a.active {
+  background-color: #4B016D;
+}
+
+/* End Navgate */
+/* start add task-section */
+.add-task-section {
+  background-color: rgba(25, 135, 84, 0.2901960784);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.add-task-section input[type=text] {
+  background-color: #009688;
+  color: white;
+  caret-color: #4B016D;
+}
+.add-task-section input[type=submit] {
+  background-color: #4B016D;
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+}
+
+/* End add task section */
+/* start Tasks container => header */
+.content {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.content header.header-tasks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.content header.header-tasks .btn-finshed, .content header.header-tasks .btn-delete {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.7;
+  text-transform: capitalize;
+  transition: 0.4s;
+  background-color: #009688;
+}
+.content header.header-tasks .btn-finshed:hover, .content header.header-tasks .btn-delete:hover {
+  opacity: 1;
+}
+.content header.header-tasks .btn-delete {
+  background-color: #4B016D;
+}
+.content aside.information-tasks {
+  background-color: #EFEFEF;
+  padding: 25px;
+}
+.content aside.information-tasks .tasks-info {
+  color: #777;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  margin: 16px 0;
+}
+.content aside.information-tasks .tasks-info .number {
+  margin: 0 8px;
+}
+.content aside.information-tasks .tasks-info.tasks-number .number {
+  background-color: #4B016D;
+}
+.content aside.information-tasks .tasks-info.tasks-finshed .number {
+  background-color: #009688;
+}
+
+body {
+  height: 10000px;
+}
+
+/* start Tasks container => header *//*# sourceMappingURL=App.css.map */
