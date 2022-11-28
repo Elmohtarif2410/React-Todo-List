@@ -93,6 +93,7 @@ ul {
 .content {
     padding-top: 25px;
     padding-bottom: 25px;
+    background-color: #F9f9f9;
 
     header.header-tasks {
         display: flex;
@@ -130,6 +131,10 @@ ul {
             display: flex;
             margin: 16px 0;
 
+            @media (max-width: 767px) {
+                justify-content: center;
+            }
+
             .number {
                 margin: 0 8px;
             }
@@ -143,4 +148,56 @@ ul {
 body {
     height: 10000px;
 }
-/* start Tasks container => header */ 
+/* End Tasks container => header */ 
+
+/* start Tasks container => article Tsks */ 
+
+.task-container {
+    padding: 12px 24px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .content-tasks {
+        display: flex;
+        gap: 10px;
+        flex-grow: 1;
+
+        label {
+            flex-grow: 1;
+        }
+
+        input {
+            box-shadow: none;
+        }
+
+        &.complet {
+            text-decoration: line-through;
+        }
+    }
+
+    .actions {
+
+        .delele {
+            color: #dc3545;
+            transition: $transition;
+
+            &:hover {
+                color: $main-color
+            }
+        }
+
+        .edit {
+            color: $secound-color;
+
+            &:hover {
+                color: $main-color
+            }
+        }
+    }
+
+
+}
+
+/* End Tasks container => article Tsks */ 

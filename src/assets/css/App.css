@@ -70,6 +70,7 @@ ul {
 .content {
   padding-top: 25px;
   padding-bottom: 25px;
+  background-color: #F9f9f9;
 }
 .content header.header-tasks {
   display: flex;
@@ -102,6 +103,11 @@ ul {
   display: flex;
   margin: 16px 0;
 }
+@media (max-width: 767px) {
+  .content aside.information-tasks .tasks-info {
+    justify-content: center;
+  }
+}
 .content aside.information-tasks .tasks-info .number {
   margin: 0 8px;
 }
@@ -116,4 +122,41 @@ body {
   height: 10000px;
 }
 
-/* start Tasks container => header *//*# sourceMappingURL=App.css.map */
+/* End Tasks container => header */
+/* start Tasks container => article Tsks */
+.task-container {
+  padding: 12px 24px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-container .content-tasks {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+.task-container .content-tasks label {
+  flex-grow: 1;
+}
+.task-container .content-tasks input {
+  box-shadow: none;
+}
+.task-container .content-tasks.complet {
+  text-decoration: line-through;
+}
+.task-container .actions .delele {
+  color: #dc3545;
+  transition: 0.4s;
+}
+.task-container .actions .delele:hover {
+  color: #4B016D;
+}
+.task-container .actions .edit {
+  color: #009688;
+}
+.task-container .actions .edit:hover {
+  color: #4B016D;
+}
+
+/* End Tasks container => article Tsks *//*# sourceMappingURL=App.css.map */
