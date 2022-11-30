@@ -5,7 +5,7 @@ const AddTask = () => {
         <section className='add-task-section'>
             <div className="container">
                 <form action="">
-                    <div class="input-group">
+                    <div className="input-group">
                         <input className='shadow-none form-control' type="text"/>
                         <input className="input-group-text" type="submit" value="+"/>
                     </div>

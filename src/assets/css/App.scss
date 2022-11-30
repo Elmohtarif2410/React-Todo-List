@@ -154,6 +154,7 @@ body {
 
 .task-container {
     padding: 12px 24px;
+    margin-bottom: 15px;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -201,3 +202,25 @@ body {
 }
 
 /* End Tasks container => article Tsks */ 
+
+/* Stat footer */
+
+.footer {
+    padding: 20px 0;
+    background-color: $secound-color;
+    color: white;
+    font-size: 17px;
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: $transition;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+/* End footer */

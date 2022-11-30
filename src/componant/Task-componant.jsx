@@ -4,14 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-const TaskComponant = () => {
+const TaskComponant = (props) => {
 
-    const [task, setTask] = useState({
-        id: 1,
-        content: "Task one",
-        type: "day",
-        complet: false
-    });
+    const [task, setTask] = useState(props.task);
 
     return (  
         <section className="task-container rounded">

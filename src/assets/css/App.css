@@ -126,6 +126,7 @@ body {
 /* start Tasks container => article Tsks */
 .task-container {
   padding: 12px 24px;
+  margin-bottom: 15px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -159,4 +160,22 @@ body {
   color: #4B016D;
 }
 
-/* End Tasks container => article Tsks *//*# sourceMappingURL=App.css.map */
+/* End Tasks container => article Tsks */
+/* Stat footer */
+.footer {
+  padding: 20px 0;
+  background-color: #009688;
+  color: white;
+  font-size: 17px;
+}
+.footer a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.4s;
+}
+.footer a:hover {
+  color: #4B016D;
+}
+
+/* End footer *//*# sourceMappingURL=App.css.map */
