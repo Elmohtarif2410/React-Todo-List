@@ -5,6 +5,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "./assets/css/App.css";
 
+import TaskContext from './context/Task-context';
+
 import Header from './componant/Header';
 import TypeTaskes from './componant/Type-tasks';
 import AddTask from './componant/Add-task';
@@ -14,13 +16,15 @@ import Footer from './componant/Footer';
 const App = () => {
 
     return (
-        <BrowserRouter>
-            <Header />
-            <TypeTaskes />
-            <AddTask />
-            <TasksContainer />
-            <Footer />
-        </BrowserRouter>
+        <TaskContext>
+            <BrowserRouter>
+                <Header />
+                <TypeTaskes />
+                <AddTask />
+                <TasksContainer />
+                <Footer />
+            </BrowserRouter>
+        </TaskContext>
     )
 }
 
