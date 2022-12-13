@@ -17,20 +17,54 @@ const TaskContext = (props) => {
         
         const tasksClone = [...tasks];
 
-        const taskChange = tasksClone.filter( (thisTask) => thisTask === task);
+        const taskChange = tasksClone.filter( (thisTask) => thisTask === task)[0];
 
-        console.log(taskChange);
+        if (taskChange.complet === false) {
 
-        taskChange.complet = true;
+            taskChange.complet = true;
+
+        } else {
+            taskChange.complet = false;
+        }
+
+        setTasks(tasksClone);
+
+    }
+
+    
+    const completeAlldTasks = (tasksType) => {
+
+        const tasksClone = [...tasks];
+
+        const tasksThisType = tasks.filter( (task) => {
+
+            if (tasksType != "") {
+
+                return task.type === tasksType
+
+            } else {
+
+                return task.type === "day"
+            }
+    
+        });
+
+        console.log(tasksThisType);
+
+        tasksThisType.map( (task) => {
+
+            return task.complet = true
+        });
 
         setTasks(tasksClone);
     }
 
     return (  
-        <ContextTask.Provider value={{tasks, completedTask}}>
+        <ContextTask.Provider value={{tasks, completedTask, completeAlldTasks}}>
             {props.children}
         </ContextTask.Provider>
     );
 }
  
 export default TaskContext;
+

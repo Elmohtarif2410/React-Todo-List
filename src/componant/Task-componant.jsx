@@ -17,8 +17,8 @@ const TaskComponant = (props) => {
     return (  
         <section className="task-container rounded">
             <div className={(task.complet === true) ? "content-tasks complet": "content-tasks"}>
-                <input type="checkbox" id={"task-" + task.id} className="form-check-input" checked={(task.complet === true) ? "checked" : null}/>
-                <label htmlFor={"task" + task.id} className="form-check-label">{task.content}</label>         
+                <input onChange={() => completedTask(task)} type="checkbox" id={"task-" + task.id} className="form-check-input" checked={(task.complet === true) ? "checked" : null}/>
+                <label htmlFor={"task-" + task.id} className="form-check-label">{task.content}</label>         
             </div>
             <div className="actions">
                 <button className="delele btn">

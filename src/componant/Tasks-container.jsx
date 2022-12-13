@@ -9,7 +9,7 @@ const TasksContainer = () => {
 
     const location = useLocation().pathname.slice(1);
 
-    const { tasks } = useContext(ContextTask)    
+    const { tasks, completeAlldTasks } = useContext(ContextTask)    
 
     const tasksThisType = tasks.filter( (task) => {
 
@@ -29,7 +29,7 @@ const TasksContainer = () => {
         <section className="content">
             <div className="container">                
                 <header className="header-tasks">
-                    <button className="btn-finshed btn">finshed all</button>
+                    <button className="btn-finshed btn" onClick={() => completeAlldTasks(location)}>finshed all</button>
                     <button className="btn-delete btn">delete all</button>
                 </header>
                 <div className="row">
