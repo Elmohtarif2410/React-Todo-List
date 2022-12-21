@@ -5,13 +5,24 @@ export const ContextTask = React.createContext();
 const TaskContext = (props) => {
 
     const [tasks, setTasks] = useState([
-        {id: 1, content: "Task one", type: "day", complet: true},
+        {id: 1, content: "Task one", type: "day", complet: false},
         {id: 2, content: "Task Two", type: "day", complet: false},
         {id: 3, content: "Task three", type: "week", complet: false},
         {id: 4, content: "Task four", type: "week", complet: false},
         {id: 5, content: "Task five", type: "month", complet: false},
         {id: 6, content: "Task six", type: "month", complet: false},
     ]);
+
+    
+    const addTask = (newTask) => {
+
+        const tasksClone = [...tasks];
+
+        tasksClone.push(newTask);
+
+        setTasks(tasksClone);       
+    };
+
 
     const completedTask = (task) => {
         
@@ -49,8 +60,6 @@ const TaskContext = (props) => {
     
         });
 
-        console.log(tasksThisType);
-
         tasksThisType.map( (task) => {
 
             return task.complet = true
@@ -60,7 +69,7 @@ const TaskContext = (props) => {
     }
 
     return (  
-        <ContextTask.Provider value={{tasks, completedTask, completeAlldTasks}}>
+        <ContextTask.Provider value={{tasks, addTask, completedTask, completeAlldTasks}}>
             {props.children}
         </ContextTask.Provider>
     );
