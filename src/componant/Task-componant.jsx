@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { ContextTask } from '../context/Task-context';
@@ -10,18 +10,16 @@ const TaskComponant = (props) => {
 
     const [task, setTask] = useState(props.task);
 
-    const {completedTask} = useContext(ContextTask);
-
-    // completedTask(task)
-
+    const {completedTask, deleteTask} = useContext(ContextTask);
+    
     return (  
         <section className="task-container rounded">
             <div className={(task.complet === true) ? "content-tasks complet": "content-tasks"}>
-                <input onChange={() => completedTask(task)} type="checkbox" id={"task-" + task.id} className="form-check-input" checked={(task.complet === true) ? "checked" : null}/>
+                <input onChange={ () => completedTask(task)} type="checkbox" id={"task-" + task.id} className="form-check-input" checked={(task.complet === true) ? "checked" : null} />
                 <label htmlFor={"task-" + task.id} className="form-check-label">{task.content}</label>         
             </div>
             <div className="actions">
-                <button className="delele btn">
+                <button className="delele btn" onClick={ () => deleteTask(task)}>
                     <FontAwesomeIcon icon={faTrash} />
                 </button>
                 <button className="edit btn">

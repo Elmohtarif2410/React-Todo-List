@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+
 export const ContextTask = React.createContext();
 
 const TaskContext = (props) => {
@@ -13,7 +17,9 @@ const TaskContext = (props) => {
         {id: 6, content: "Task six", type: "month", complet: false},
     ]);
 
-    
+    const sweetAlert = withReactContent(Swal);
+
+    /// Add Task
     const addTask = (newTask) => {
 
         const tasksClone = [...tasks];
@@ -23,7 +29,7 @@ const TaskContext = (props) => {
         setTasks(tasksClone);       
     };
 
-
+    // complete This Task
     const completedTask = (task) => {
         
         const tasksClone = [...tasks];
@@ -42,8 +48,8 @@ const TaskContext = (props) => {
 
     }
 
-    
-    const completeAlldTasks = (tasksType) => {
+    // complete All Tasks
+    const completeAllTasks = (tasksType) => {
 
         const tasksClone = [...tasks];
 
@@ -68,8 +74,82 @@ const TaskContext = (props) => {
         setTasks(tasksClone);
     }
 
+    // Delete This Task
+    const deleteTask = (remTask) => {
+
+        let tasksClone = [...tasks];
+
+        tasksClone = tasksClone.filter( task => task !== remTask);
+
+        Swal.fire({
+            title: 'Are you sure deleted Task?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'delete'
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                // set state => delete task
+                setTasks(tasksClone);
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your task has been deleted.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+          })
+    }
+
+    // Delete All Task
+    const deleteAllTasks = (tasksType) => {
+
+        const cloneTasks = [...tasks];
+
+        const tasksAfterDelete = cloneTasks.filter( (task) => {
+
+            if (tasksType != "") {
+
+                return task.type !== tasksType;
+
+            } else {
+
+                return task.type !== "day";
+            }
+        })
+
+        Swal.fire({
+            title: 'Are you sure deleted All Task?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'delete All!'
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                // set state => delete All tasks
+                setTasks(tasksAfterDelete);
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your tasks has been deleted.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+          })
+    };
+
     return (  
-        <ContextTask.Provider value={{tasks, addTask, completedTask, completeAlldTasks}}>
+        <ContextTask.Provider value={{tasks, addTask, completedTask, completeAllTasks, deleteTask, deleteAllTasks}}>
             {props.children}
         </ContextTask.Provider>
     );

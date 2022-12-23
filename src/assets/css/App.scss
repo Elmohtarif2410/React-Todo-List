@@ -144,10 +144,6 @@ ul {
         }
     }
 }
-
-body {
-    height: 10000px;
-}
 /* End Tasks container => header */ 
 
 /* start Tasks container => article Tsks */ 
@@ -167,10 +163,12 @@ body {
 
         label {
             flex-grow: 1;
+            cursor: pointer;
         }
 
         input {
             box-shadow: none;
+            cursor: pointer
         }
 
         &.complet {

@@ -118,10 +118,6 @@ ul {
   background-color: #009688;
 }
 
-body {
-  height: 10000px;
-}
-
 /* End Tasks container => header */
 /* start Tasks container => article Tsks */
 .task-container {
@@ -139,9 +135,11 @@ body {
 }
 .task-container .content-tasks label {
   flex-grow: 1;
+  cursor: pointer;
 }
 .task-container .content-tasks input {
   box-shadow: none;
+  cursor: pointer;
 }
 .task-container .content-tasks.complet {
   text-decoration: line-through;
