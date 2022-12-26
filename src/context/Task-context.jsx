@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -8,16 +8,27 @@ export const ContextTask = React.createContext();
 
 const TaskContext = (props) => {
 
-    const [tasks, setTasks] = useState([
-        {id: 1, content: "Task one", type: "day", complet: false},
-        {id: 2, content: "Task Two", type: "day", complet: false},
-        {id: 3, content: "Task three", type: "week", complet: false},
-        {id: 4, content: "Task four", type: "week", complet: false},
-        {id: 5, content: "Task five", type: "month", complet: false},
-        {id: 6, content: "Task six", type: "month", complet: false},
-    ]);
+    const [tasks, setTasks] = useState([]);
 
     const sweetAlert = withReactContent(Swal);
+
+    // reset tasks => by locale storge
+    useEffect( () => {
+
+        if (localStorage.tasksStorage) {
+            
+            setTasks(JSON.parse(localStorage.tasksStorage))
+        }
+
+    }, [])
+
+    // safe tasks to Locale storge
+    useEffect( () => {
+
+        localStorage.setItem("tasksStorage", JSON.stringify(tasks));
+
+    }, [tasks]);
+    
 
     /// Add Task
     const addTask = (newTask) => {
@@ -85,9 +96,9 @@ const TaskContext = (props) => {
             title: 'Are you sure deleted Task?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'delete'
+            confirmButtonColor: '#4B016D',
+            cancelButtonColor: '#009688',
+            confirmButtonText: 'Delete'
           }).then((result) => {
 
             if (result.isConfirmed) {
@@ -127,9 +138,9 @@ const TaskContext = (props) => {
             title: 'Are you sure deleted All Task?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'delete All!'
+            confirmButtonColor: '#4B016D',
+            cancelButtonColor: '#009688',
+            confirmButtonText: 'Delete All'
           }).then((result) => {
 
             if (result.isConfirmed) {
@@ -148,8 +159,37 @@ const TaskContext = (props) => {
           })
     };
 
+    const editTask = async (taskEditor) => {
+
+        const cloneTasks = [...tasks];
+
+        const taskChange = cloneTasks.filter( task => task === taskEditor )[0]
+
+        const { value: content } = await Swal.fire({
+            title: 'Input email address',
+            input: 'text',
+            inputLabel: 'Edit Task',
+            inputValue: taskEditor.content
+        })
+          
+        if (content) {
+
+            taskChange.content = content;
+
+            setTasks(cloneTasks);
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your tasks has been Editing.',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    }
+
     return (  
-        <ContextTask.Provider value={{tasks, addTask, completedTask, completeAllTasks, deleteTask, deleteAllTasks}}>
+        <ContextTask.Provider value={{tasks, addTask, completedTask, completeAllTasks, deleteTask, deleteAllTasks, editTask}}>
             {props.children}
         </ContextTask.Provider>
     );

@@ -10,7 +10,7 @@ const TaskComponant = (props) => {
 
     const [task, setTask] = useState(props.task);
 
-    const {completedTask, deleteTask} = useContext(ContextTask);
+    const {completedTask, deleteTask, editTask} = useContext(ContextTask);
     
     return (  
         <section className="task-container rounded">
@@ -19,10 +19,10 @@ const TaskComponant = (props) => {
                 <label htmlFor={"task-" + task.id} className="form-check-label">{task.content}</label>         
             </div>
             <div className="actions">
-                <button className="delele btn" onClick={ () => deleteTask(task)}>
+                <button className="delele btn" onClick={ () => deleteTask(task) }>
                     <FontAwesomeIcon icon={faTrash} />
                 </button>
-                <button className="edit btn">
+                <button className="edit btn" onClick={ () => editTask(task) }>
                     <FontAwesomeIcon icon={faPen} />
                 </button>
             </div>

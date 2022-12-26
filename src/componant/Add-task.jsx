@@ -3,7 +3,12 @@ import { useLocation } from 'react-router-dom';
 
 import { ContextTask } from "../context/Task-context";
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 const AddTask = () => {
+
+    const sweetAlert = withReactContent(Swal);
 
     const { tasks, addTask } = useContext(ContextTask);
 
@@ -17,16 +22,28 @@ const AddTask = () => {
         
         e.preventDefault();
 
-        const newTask = {
-            id: tasks.length + 1,
-            content: inputValue,
-            type: (location != "") ? location : "day",
-            complet: false
-        }
-        
-        addTask(newTask);
+        if (inputValue !== "") {
 
-        setInputValue("");
+            const newTask = {
+                id: tasks.length + 1,
+                content: inputValue,
+                type: (location != "") ? location : "day",
+                complet: false
+            }
+            
+            addTask(newTask);
+    
+            setInputValue("");
+            
+        } else {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Sorry, no text entered.',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
 
         inputField.current.focus();
     }
